@@ -1,6 +1,6 @@
 {
   "name": "@vlototskyi/nestjs-google-pubsub",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NestJS Google Cloud PubSub Server/Client",
   "author": "Vitalii Lototskyi",
   "repository": {
