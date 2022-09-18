@@ -1,9 +1,16 @@
 {
-  "name": "nestjs-google-cloud-pubsub",
+  "name": "@vlototskyi/nestjs-google-pubsub",
   "version": "1.0.0",
   "description": "NestJS Google Cloud PubSub Server/Client",
   "author": "Vitalii Lototskyi",
-  "url": "https://github.com/vlototskyi/nestjs-google-cloud-pubsub#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlototskyi/nestjs-google-pubsub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vlototskyi/nestjs-google-pubsub/issues"
+  },
+  "homepage": "https://github.com/vlototskyi/nestjs-google-pubsub",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
@@ -41,5 +48,12 @@
     "@nestjs/microservices": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
