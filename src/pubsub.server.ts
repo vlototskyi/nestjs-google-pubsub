@@ -44,7 +44,10 @@ export class PubSubServer extends Server implements CustomTransportStrategy {
 
     this.subscriptions.forEach((subscription, pattern) => {
       subscription.on(MESSAGE_EVENT, async (message: Message) => {
-        const packet = this.deserializer.deserialize(message, { pattern });
+        const packet = this.deserializer.deserialize(message, {
+          pattern,
+          additionalPatternProperties: this.options.additionalPatternProperties,
+        });
         const ctx = new PubSubContext({
           message,
           pattern: packet.pattern,
