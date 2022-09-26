@@ -67,7 +67,7 @@ export class PubSubClient extends ClientProxy {
 
     if (subscription.topic === null && topic === null) return null;
 
-    topic = this.getTopic(subscription?.topic);
+    topic = this.getTopic(subscription.topic ?? topic);
 
     const createSubscriptionResposne = await topic.createSubscription(
       subscription.name,
