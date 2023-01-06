@@ -23,7 +23,7 @@ export class PubSubClient extends ClientProxy {
 
   constructor(
     @Inject(MODULE_OPTIONS_TOKEN) options: ClientConfig,
-    subOptions: SubscriberOptions
+    subOptions: SubscriberOptions,
   ) {
     super();
     this.pubSubClient = new PubSub(options);
