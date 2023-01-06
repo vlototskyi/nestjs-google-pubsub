@@ -25,7 +25,7 @@ export class PubSubServer extends Server implements CustomTransportStrategy {
   constructor(protected readonly options: PubSubOptions) {
     super();
 
-    this.pubSubClient = new PubSubClient(options.client);
+    this.pubSubClient = new PubSubClient(options.client, { flowControl: options?.flowControl });
     this.deserializer = new PubSubDeserializer();
     this.autoAck = options?.autoAck ?? true;
     this.autoNack = options?.autoNack ?? false;

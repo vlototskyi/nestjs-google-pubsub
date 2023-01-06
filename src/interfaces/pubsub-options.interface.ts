@@ -1,4 +1,6 @@
+import { FlowControlOptions } from '@google-cloud/pubsub/build/src/lease-manager'
 import { ClientConfig } from '@google-cloud/pubsub';
+
 import {
   PubSubAckStrategy,
   PubSubNackStrategy,
@@ -11,4 +13,5 @@ export interface PubSubOptions {
   ackStrategy?: PubSubAckStrategy;
   nackStrategy?: PubSubNackStrategy;
   additionalPatternProperties?: string[];
+  flowControl: FlowControlOptions;
 }
