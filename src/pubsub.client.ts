@@ -4,6 +4,7 @@ import {
   Subscription,
   Topic,
   Attributes,
+  SubscriberOptions,
 } from '@google-cloud/pubsub';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
@@ -18,10 +19,15 @@ import {
 @Injectable()
 export class PubSubClient extends ClientProxy {
   private pubSubClient: PubSub;
+  private subOptions: SubscriberOptions;
 
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) options: ClientConfig) {
+  constructor(
+    @Inject(MODULE_OPTIONS_TOKEN) options: ClientConfig,
+    subOptions: SubscriberOptions
+  ) {
     super();
     this.pubSubClient = new PubSub(options);
+    this.subOptions = subOptions || {};
   }
 
   public connect(): Promise<void> {
@@ -48,7 +54,7 @@ export class PubSubClient extends ClientProxy {
     if (this.isSubscriptionInstance(subscription)) {
       return subscription;
     } else {
-      return this.pubSubClient.subscription(subscription);
+      return this.pubSubClient.subscription(subscription, this.subOptions);
     }
   }
 
@@ -71,6 +77,7 @@ export class PubSubClient extends ClientProxy {
 
     const createSubscriptionResposne = await topic.createSubscription(
       subscription.name,
+      this.subOptions,
     );
     return createSubscriptionResposne[0];
   }
